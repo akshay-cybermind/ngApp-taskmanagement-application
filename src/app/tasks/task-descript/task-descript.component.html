@@ -1,0 +1,65 @@
+
+
+<div class="container">
+    <div class="row bg-primary py-2 text-light">
+        <div class="col-md-12">
+               <img height="32" width="32" [src]="'http://localhost:8000/storage/'+ task.user.avatar " alt="">
+               {{ task.user.name | titlecase }}
+        </div>
+    </div>
+    <div class="row my-2">
+          <div class="col-md-8">
+              <i class="fa fa-tasks" aria-hidden="true"></i>
+               {{ task.category.name }}
+          </div>
+          <div class="col-md-4">
+              <span class="badge badge-pill badge-primary">
+                  {{  task.status.name | uppercase }}
+              </span>
+        </div>
+        <div class="col-md-12">
+            <h3 class="py-2">{{  task.subject }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 my-2">
+            <div *ngIf="task.status.name !=='done' " class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" (click)="complete()" class="mr-2 btn btn-primary">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    Complete</button>
+                <button (click)="cancel()" type="button" class="mr-2 btn btn-danger">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  Cancel</button>
+                <button type="button" (click)="hold()" class="mr-2 btn btn-dark">
+                    <i class="fa fa-pause" aria-hidden="true"></i>
+                  Put on Hold</button>
+            </div>
+            <div *ngIf="task.status.name ==='done' " class="btn-group" role="group" aria-label="Basic example">
+                <button (click)="reactivate()" type="button" class="mr-2 btn btn-primary">
+                    <i class="fa fa-unlock" aria-hidden="true"></i>
+                    Reactivated
+                  </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+              <h5>comments</h5>
+              <div  class="media my-3">
+                  <img class="mr-3" height="32" width="32" [src]="'http://localhost:8000/storage/'+ task.user.avatar "  alt="Generic placeholder image">
+                  <div class="media-body">
+                    <h6 class="mt-0">@massaybah</h6>
+                    <textarea type="text" class="form-control"></textarea>
+                  </div>
+              </div>
+              <div  class="media my-3" *ngFor="let comment of task.comments">
+                  <img class="mr-3" height="32" width="32" [src]="'http://localhost:8000/storage/'+ comment.user.avatar "  alt="Generic placeholder image">
+                  <div class="media-body">
+                    <h5 class="mt-0">Media heading</h5>
+                    <p>{{ comment.body }}</p>
+                  </div>
+              </div>
+        </div>
+    </div>
+</div>

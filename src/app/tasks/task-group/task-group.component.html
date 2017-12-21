@@ -1,0 +1,14 @@
+<div class="card mb-3">
+    <div class="card-header text-light" [ngClass]=" 'bg-'+color">{{ title }}
+      <span class="float-right">{{ tasks?.length }}</span>
+    </div>
+    <div class="card-body">
+         <p  *ngIf="tasks?.length<=0 ">No Task</p>
+        <app-task-item *ngFor="let task of tasks" [task]='task'></app-task-item>
+    </div>
+    <div class="card-footer bg-transparent border-success">
+       <app-task-new [groupName]="title" >
+            <app-task-create></app-task-create>
+       </app-task-new>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+      <div class="col-md-4">
+          <form [formGroup]='fg' (ngSubmit)="login()">
+              <div class="form-group">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                    <input class="form-control" formControlName='email' type="email" placeholder="Email address">
+                  </div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input class="form-control" formControlName='password' type="password" placeholder="Password">
+                  </div>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input">
+                  Check me out
+                </label>
+              </div>
+              <div class="form-row" >
+                <button type="submit" class="btn btn-primary" [disabled]="fg.invalid" >
+                    <i  *ngIf="loading" class="fa fa-spinner fa-pulse  fa-fw"></i>
+                    <span *ngIf="loading" class="sr-only">Loading...</span>
+                  Login</button>
+                <!-- <div class="col-6 progress-spinner" *ngIf="loading">
+                  <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                  <span class="sr-only">Loading...</span>
+                </div> -->
+              </div>
+
+              <div *ngIf="error" class="alert alert-danger" style="margin-top: 5px;" role="alert">
+                   <p *ngIf="message.email">
+                   {{message.email }}
+                  </p>
+                  <p *ngIf="message.password">
+                      {{message.password }}
+                  </p>
+                  <p *ngIf="message.unknown">
+                      {{message.unknown }}
+                  </p>
+              </div>
+
+            </form>
+
+      </div>
+  </div>
+</div>

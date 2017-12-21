@@ -1,0 +1,14 @@
+<!-- In app.component.html -->
+<div>
+    <h4 class="bg-primary text-light py-2">
+        {{ cat.name | titlecase }}
+      </h4>
+
+      <!-- Add the timeline -->
+      <vertical-timeline>
+        <vertical-timeline-card *ngFor="let task of cat.tasks"  [dateValue]="task.created_at">
+              <app-task-item [task]='task' ></app-task-item>
+        </vertical-timeline-card>
+      </vertical-timeline>
+
+</div>

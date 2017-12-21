@@ -1,0 +1,21 @@
+<ul class="list-group">
+    <li data-toggle="dropdown" class="list-group-item d-flex dropdown-toggle justify-content-between align-items-center dropdown">
+         <img width="32" height="32" src="assets/avatars/1889710.jpg" alt=""> {{ user.name}}
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+
+  <li *ngFor="let category of categories" class="list-group-item d-flex justify-content-between align-items-center">
+    <a routerLink="category/{{ category.id }}"> {{ category.name | titlecase }}</a>
+    <span class="badge badge-primary badge-pill">{{ category.tasks.length }} </span>
+  </li>
+
+</ul>
+
+<button class="btn btn-warning btn-block">
+    <i class="fa fa-plus" aria-hidden="true"></i> Add new List
+</button>
