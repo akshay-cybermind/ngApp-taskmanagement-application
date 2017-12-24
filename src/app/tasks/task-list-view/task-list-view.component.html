@@ -1,14 +1,17 @@
 <div class="row" style="margin-top:25px;">
   <div class="col-md-3">
-    <app-task-group [tasks]='done' [title]="'Done task'" [color]="'primary'"></app-task-group>
+    <app-task-group [tasks]='done' [title]="'Done'" [color]="'primary'"></app-task-group>
   </div>
   <div class="col-md-3">
-   <app-task-group  [tasks]='open' [title]="'Open task'" [color]="'danger'"></app-task-group>
+   <app-task-group  [tasks]='open' [title]="'Open'" [color]="'danger'"></app-task-group>
  </div>
  <div class="col-md-3">
-   <app-task-group [tasks]='on_going' [title]="'On Going task'" [color]="'warning'"></app-task-group>
+   <app-task-group [tasks]='on_going' [title]="'On Going'" [color]="'success'"></app-task-group>
  </div>
  <div class="col-md-3">
-   <app-task-group [tasks]='other' [title]="'Other task'" [color]="'success' "></app-task-group>
+   <app-task-group [tasks]='hold' [title]="'Hold'" [color]="'info' "></app-task-group>
+ </div>
+ <div class="col-md-3">
+   <app-task-group [tasks]='cancelled' [title]="'Cancelled'" [color]="'warning' "></app-task-group>
  </div>
 </div>

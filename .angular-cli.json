@@ -25,7 +25,12 @@
         "../node_modules/ngx-easy-table/spectre.css",
         "../node_modules/ngx-easy-table/spectre-icons.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/popper.min.js",
+        "assets/js/tether.min.js",
+        "assets/js/jquery-3.1.1.slim.min.js",
+        "assets/js/bootstrap.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

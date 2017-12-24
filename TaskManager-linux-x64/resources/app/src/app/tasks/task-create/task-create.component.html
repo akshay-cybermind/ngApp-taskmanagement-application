@@ -1,0 +1,57 @@
+<form [formGroup]="fg" (ngSubmit)="createTask()">
+
+  <div class="row">
+     <div class="col-md-12">
+       <button *ngIf="fg.valid" class="btn btn-primary btn-block" type="submit" [disabled]='!fg.valid'>Add</button>
+       <i  *ngIf="loading" class="fa fa-spinner fa-pulse  fa-fw"></i>
+       <span *ngIf="loading" class="sr-only">Loading...</span>
+     </div>
+
+  </div>
+
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="validationServer01">Subject</label>
+        <input formControlName="subject" type="text" class="form-control is-valid" id="subject" placeholder="Subject" required>
+      </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-12 mb-3">
+          <label for="validationServer01">Assign To:</label>
+          <input formControlName="user_id" [value]="user.id"  type="text" class="form-control is-valid"  placeholder="Assign User to" required>
+        </div>
+      </div> -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="validationServer03">Category</label>
+        <select formControlName="category_id" name="" class="form-control" id="">
+           <option *ngFor="let cat of categories" [value]="cat.id">
+              {{cat.name}}
+           </option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationServer04">Status</label>
+        <select formControlName="status_id" name="" class="form-control" id="">
+           <option *ngFor="let status of statuses" [value]="status.id">
+              {{status.name}}
+           </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="validationServer03">Start Date</label>
+          <ng-datepicker formControlName="start"  name="start"></ng-datepicker>
+
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationServer04">Due Date</label>
+          <ng-datepicker formControlName="due"  name="due"></ng-datepicker>
+
+      </div>
+    </div>
+
+
+
+  </form>

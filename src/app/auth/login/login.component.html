@@ -7,7 +7,7 @@
 
                 <div class="input-group margin-bottom-sm">
                     <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                    <input class="form-control" formControlName='email' type="email" placeholder="Email address">
+                    <input class="form-control" (keyup)=" validateEmail($event)" formControlName='email' type="email" placeholder="Email address">
                   </div>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
@@ -24,7 +24,7 @@
                 </label>
               </div>
               <div class="form-row" >
-                <button type="submit" class="btn btn-primary" [disabled]="fg.invalid" >
+                <button type="submit" class="btn btn-primary" [disabled]="!fg.valid && clicked" >
                     <i  *ngIf="loading" class="fa fa-spinner fa-pulse  fa-fw"></i>
                     <span *ngIf="loading" class="sr-only">Loading...</span>
                   Login</button>
@@ -36,13 +36,16 @@
 
               <div *ngIf="error" class="alert alert-danger" style="margin-top: 5px;" role="alert">
                    <p *ngIf="message.email">
-                   {{message.email }}
+                   {{message?.email }}
                   </p>
                   <p *ngIf="message.password">
-                      {{message.password }}
+                      {{message?.password }}
+                  </p>
+                  <p *ngIf="message.server_err">
+                      {{message?.server_err }}
                   </p>
                   <p *ngIf="message.unknown">
-                      {{message.unknown }}
+                      {{message?.unknown }}
                   </p>
               </div>
 

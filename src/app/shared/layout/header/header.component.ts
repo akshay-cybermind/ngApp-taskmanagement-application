@@ -9,6 +9,7 @@ import {User} from '../../models/user.model';
 export class HeaderComponent implements OnInit {
 
 user: User;
+title: string;
   constructor(private userService: UserService) {
       //  this.user = this.userService.getCurrentUser();
       //  console.log(' header com user ', this.user);
@@ -16,6 +17,7 @@ user: User;
    }
 
   ngOnInit() {
+    this.title = 'Task Management';
     this.userService.currentUser.subscribe ( data => {
       console.log('header curr user ', data);
       this.user = data;

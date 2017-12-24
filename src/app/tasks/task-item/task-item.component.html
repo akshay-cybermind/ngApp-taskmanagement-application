@@ -19,7 +19,12 @@
                </div>
                <div class="col-11" style="padding: 0">
                   <img width="24" height="24" [src]="'http://localhost:8000/storage/'+task.user.avatar" alt="">
-                  <span class="badge" [ngClass]="{'badge-success':task.status.name =='done','badge-danger':task.status.name =='open','badge-primary':task.status.name =='on going'}" >{{ task.status.name }}</span>
+                  <span class="badge" [ngClass]="{
+                    'badge-success':task.status.name =='on going',
+                    'badge-warning':task.status.name =='hold',
+                    'badge-danger':task.status.name =='cancel'
+                    ,'badge-info':task.status.name =='open',
+                    'badge-primary':task.status.name =='done'}" >{{ task.status.name }}</span>
                </div>
         </div>
     </div>

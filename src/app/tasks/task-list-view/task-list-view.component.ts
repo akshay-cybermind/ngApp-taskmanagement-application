@@ -13,14 +13,16 @@ export class TaskListViewComponent implements OnInit {
   done: Task[];
   on_going: Task[];
   open: Task[];
-  other: Task[];
+  hold: Task[];
+    cancelled: Task[];
   ngOnInit() {
     this.taskService.getAll().subscribe( data => {
       console.log('task service response', data);
       this.done = data['done'];
       this.open = data['open'];
       this.on_going = data['on going'];
-      this.other = [];
+      this.hold = data['hold'];
+      this.cancelled = data['cancel'];
     });
   }
 }

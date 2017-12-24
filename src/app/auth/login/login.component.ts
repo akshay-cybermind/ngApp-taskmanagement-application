@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   error: boolean;
   message: {};
   success: boolean;
+  clicked: boolean;
   obs: Observable<any>;
+
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private router: Router
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
               }
 
   ngOnInit() {
+    this.clicked = true;
     this.fg = this.fb.group({
         'email': [null, Validators.compose([Validators.required, Validators.email])],
         'password': [null, Validators.required]
@@ -36,7 +39,15 @@ export class LoginComponent implements OnInit {
   }
 
 
+  validateEmail(email){
+      email.subscribe( data => {
+        console.log('hello', data);
+      } );
+  }
+
+
   login() {
+    this.clicked = !true;
     this.loading = true;
     this.error = false;
     this.success = false;
@@ -50,10 +61,20 @@ export class LoginComponent implements OnInit {
         this.error = true;
         this.loading = false;
         this.success = false;
-        this.message = err.json().errors;
-        console.error('err -> ', err.json().errors);
+        console.log('err', err.json().errors);
+        if( err.type ===3 ){
+
+                this.message['server_err'] = 'Server is Down.Please check your API Provider';
+                this.message['email']='';
+                this.message['password'] ='';
+                this.message['unknown'] ='';
+        }else{
+            this.message = err.json().errors;
+            this.message['server_err']='';
+        }
+
     }, () => {
-      this.loading = true;
+      this.loading = false;
     } );
   }
 }

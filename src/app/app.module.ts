@@ -24,7 +24,10 @@ const main_routes: Routes = [
   ],
   imports: [
     BrowserModule , FormsModule, BrowserAnimationsModule, NgDatepickerModule,
-    NgbModalModule.forRoot(), CalendarModule.forRoot() , ToastrModule.forRoot(),
+    NgbModalModule.forRoot(), CalendarModule.forRoot() , ToastrModule.forRoot({
+        preventDuplicates: true,
+        timeOut:2000
+    }),
     VerticalTimelineModule,
     HttpModule, UsersModule, TasksModule, SharedModule,
     AuthModule,

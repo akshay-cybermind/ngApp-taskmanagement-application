@@ -24,15 +24,18 @@
     <div class="row">
         <div class="col-md-12 my-2">
             <div *ngIf="task.status.name !=='done' " class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" (click)="complete()" class="mr-2 btn btn-primary">
+                <button *ngIf="task.status.name !=='done' && task.status.name !=='cancel' && task.status.name !=='hold' " type="button" (click)="complete()" class="mr-2 btn btn-primary">
                     <i class="fa fa-check" aria-hidden="true"></i>
                     Complete</button>
-                <button (click)="cancel()" type="button" class="mr-2 btn btn-danger">
+                <button *ngIf="task.status.name !=='done' && task.status.name !=='cancel' && task.status.name !=='hold' " (click)="cancel()" type="button" class="mr-2 btn btn-danger">
                     <i class="fa fa-times" aria-hidden="true"></i>
                   Cancel</button>
-                <button type="button" (click)="hold()" class="mr-2 btn btn-dark">
+                <button *ngIf="task.status.name !=='done' && task.status.name !=='cancel' && task.status.name !=='hold' " type="button" (click)="hold()" class="mr-2 btn btn-dark">
                     <i class="fa fa-pause" aria-hidden="true"></i>
                   Put on Hold</button>
+                  <button *ngIf="task.status.name !=='on going' && task.status.name !=='open' "   type="button" (click)="start()" class="mr-2 btn btn-info">
+                      <i class="fa fa-play" aria-hidden="true"></i>
+                    {{ (task.status.name ==='cancel') ? 'Resume': 'Start' }}</button>
             </div>
             <div *ngIf="task.status.name ==='done' " class="btn-group" role="group" aria-label="Basic example">
                 <button (click)="reactivate()" type="button" class="mr-2 btn btn-primary">
@@ -40,6 +43,8 @@
                     Reactivated
                   </button>
             </div>
+            <i *ngIf="loading"  class="fa fa-cog fa-spin fa-2x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
         </div>
     </div>
 
